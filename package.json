@@ -1,0 +1,56 @@
+{
+  "name": "riverrauth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@sentry/node": "^4.0.6",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "date-fns": "^1.29.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "geoip-lite": "^1.3.2",
+    "joi": "^13.6.0",
+    "jsonwebtoken": "^8.3.0",
+    "knex": "^0.15.2",
+    "knex-cleaner": "^1.1.4",
+    "node-nats-streaming": "^0.0.50",
+    "objection": "^1.3.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "^7.4.3",
+    "prettysize": "^1.1.0",
+    "redis": "^2.8.0",
+    "table": "^5.1.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "scripts": {
+    "prestart:dev": "knex migrate:latest",
+    "start:dev": "NODE_ENV='development' nodemon --inspect=0.0.0.0:9230 ./src/babel.start.js",
+    "dev": "NODE_ENV='development' nodemon --inspect ./src/babel.start.js",
+    "test": "NODE_ENV='test' jest --coverage",
+    "test:watch": "NODE_ENV='test' jest --watchAll"
+  },
+  "jest": {
+    "testURL": "http://localhost/",
+    "verbose": true,
+    "setupTestFrameworkScriptFile": "<rootDir>/test_setup/setup.js",
+    "coveragePathIgnorePatterns": [
+      "models",
+      "connectors",
+      "test_setup"
+    ]
+  }
+}
